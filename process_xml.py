@@ -1,5 +1,6 @@
 from xml.dom import minidom
 import os
+import json
 # parse an xml file by name
 mydoc = minidom.parse('sitemap.xml')
 
@@ -109,20 +110,26 @@ relation[0][0] = levels[1]
 #print(site_links)
 print("-"*50 + "Levels" + "-"*50)
 
-if os.path.exists('levels.txt'):
-    os.remove('levels.txt')
-if os.path.exists('relation.txt'):
-    os.remove('relation.txt')
+if os.path.exists('levels.json'):
+    os.remove('levels.json')
+if os.path.exists('relation.json'):
+    os.remove('relation.json')
 
+print("{\"levels\":[", file=open("levels.json", "a"))
 for i in range(len(levels)):
     print(i, levels[i])
-    print(levels[i], file=open("levels.txt", "a"))
+    print(json.dumps(levels[i]), file=open("levels.json", "a"))
     if i != len(levels) - 1:
-        print(",", file=open("levels.txt", "a"))
+        print(",", file=open("levels.json", "a"))
+print("]}", file=open("levels.json", "a"))
 print()
 print("-"*50 + "Relations" + "-"*50)
+
+print("{\"relations\":[", file=open("relation.json", "a"))
 for i in range(len(relation)):
     print(i, relation[i])
-    print(relation[i], file=open("relation.txt", "a"))
+    print(json.dumps(relation[i]), file=open("relation.json", "a"))
     if i != len(relation) - 1:
-        print(",", file=open("relation.txt", "a"))
+        print(",", file=open("relation.json", "a"))
+
+print("]}", file=open("relation.json", "a"))
