@@ -1,7 +1,7 @@
 {"levels":[
-["http://www.learn-cpp.org"]
+["http://www.learnshell.org"]
 ,
-["en", "de", "about", "tos", "privacy", "cdn-cgi"]
+["en", "tos", "privacy", "about", "de", "cdn-cgi"]
 ,
-["For_loops", "Arrays", "Template_Metaprogramming", "Contributing_Tutorials", "Structures", "Strings", "Recursion", "Pointers", "While_loops", "Generic_Programming", "Linked_lists", "Inheritance", "Function_Pointers", "Dynamic_allocation", "Hello%2C_World%21", "World%21%2C_Hello", "Function_arguments_by_reference", "Binary_trees", "Functions", "Variables_and_Types", "l", "World!,_Hello", "Welcome", "Hello,_World!"]
+["Regular_Expressions", "Array-Comparison", "Hello%2C_World%21", "Loops", "Decision_Making", "Special_Commands__sed%2Cawk%2Cgrep%2Csort", "Pipelines", "Basic_Operators", "Bash_trap_command", "Input_Parameter_Parsing", "Special_Variables", "Basic_String_Operations", "Contributing_Tutorials", "Variables", "Process_Substitution", "Shell_Functions", "Arrays", "Passing_Arguments_to_the_Script", "File_Testing", "l", "Welcome", "Hello,_World!", "Special_Commands__sed,awk,grep,sort"]
 ]}

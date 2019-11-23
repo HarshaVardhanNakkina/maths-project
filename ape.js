@@ -17,16 +17,47 @@ let relation_1 = [
 	[[], [], [], [], [], []]
 ];
 
+/*--------------trial version 2-------------------*/
+
+
+/*--------------trial version 1-------------------*/
+// function buildChildren(i, j){
+	
+// 	for(let level = i; level < levels_1.length; level++){
+// 		let x = []
+// 		for(let node = j; node < levels_1[level].length; node++){
+// 			if(relation_1[level][node].length) {
+// 				x.push({name: levels_1[level][node], children: []})
+// 				for(let child = 0; child < relation_1[level][node].length; child++){
+// 					x[j].children.push({
+// 						name: relation_1[level][node][child],
+// 						children: buildChildren(level+1, node)
+// 					})
+// 				}
+// 			}else {
+// 				return {
+// 					name: levels_1[i][j],
+// 					children: []
+// 				}
+// 			}
+// 		}
+// 		console.log(x)
+// 		return x
+// 	} 
+// }
+
+
+/*-----------------working version 1---------------*/
 // function buildChildren(i, j){
 // 	for (; i < levels_1.length; i++) {
+// 		let x = []
+// 		let y = []
 // 		for (; j < levels_1[i].length; j++) {
-// 			let y = {}
-// 			let x = []
 // 			if(relation_1[i][j].length){
-// 				for(let k = 0; k < relation_1.length; k++) {
+// 				if(x.length <= relation_1[i][j].length){
 // 					x.push({
-// 						name: relation_1[i][j],
-// 						children: buildChildren(i+1, k)
+// 						name: levels_1[i][j],
+// 						children: buildChildren(i+1, j)
 // 					})
 // 				}
 // 			}
@@ -34,34 +65,11 @@ let relation_1 = [
 // 				name: levels_1[i][j],
 // 				children: []
 // 			})
-// 			y.name = levels_1[i][j]
-// 			y.children = x;
-// 			return y
 // 		}
+// 		return x
 // 	}
+// 	return getChildren(relation_1[i-1][j])
 // }
-
-/*-----------------working version 1---------------*/
-function buildChildren(i, j){
-	for (; i < levels_1.length; i++) {
-		let x = []
-		for (; j < levels_1[i].length; j++) {
-			if(relation_1[i][j].length){
-				if(x.length <= relation_1[i][j].length){
-					x.push({
-						name: levels_1[i][j],
-						children: buildChildren(i+1, j)
-					})
-				}
-			}
-			else x.push({
-				name: levels_1[i][j],
-				children: []
-			})
-		}
-		return x
-	}
-}
 
 
 console.log('build children',buildChildren(0,0));
@@ -89,8 +97,8 @@ for(let i = 0; i < levels_1.length; i++) {
 		}
 	}
 }
-console.log(children)
-console.log(children_obj)
+// console.log(children)
+// console.log(children_obj)
 /*
 	let treeData = {
 		name: 'Top Level',
@@ -103,52 +111,4 @@ console.log(children_obj)
 		]
 	};
 */
-let treedata = {
-	name: levels_1[0][0],
-	children: children_obj[levels_1[0][0]]
-}
 
-treedata.children.forEach(child => {
-	child.children = addChildren(child.name)
-});
-
-function addChildren(name) {
-	if(children_obj.hasOwnProperty(name))
-		return children_obj[name]
-	else return []
-}
-
-// console.log(treedata)
-
-
-
-// for (let i = 0; i < levels_1.length; i++) {
-// 	let level = levels[i]
-// 	for (let j = 0; j < level.length; j++) {
-// 		for(let k = 0; k < relation_1[j][k].length; k++){
-// 			if(relation[j][k].length) {
-// 				let x = getChildren(relation[j][k])
-// 				let y = {
-// 					name: level[j],
-// 					children: x
-// 				}
-// 				children.push(y);
-// 			}
-// 		}
-// 	}
-// }
-
-
-/*
-let treeData = {
-	name: 'http://cse.nitk.ac.in',
-	children: [
-		{
-			name: 'sites',children: []
-		},
-		{
-			name: 'courses',children: [] 
-		}
-	] 
-}
-*/
