@@ -23,19 +23,29 @@ function createSiteMap(levels, relation) {
 			let x = [];
 			for (; j < levels[i].length; j++) {
 				if (relation[i][j].length) {
-					x.push({
-						name: levels[i][j].replace(/\//g, '/'),
-						children: buildChildren(i + 1, j)
-					});
+					// x.push({
+					// 	name: levels[i][j].replace(/\//g, '/'),
+					// 	children: buildChildren(i + 1, j)
+					// });
+					x.push(getChildren(relation[i][j]))
+					console.log(x);
+					buildChildren(i+1, j);
 				} else x.push({ name: levels[i][j] });
 			}
 			return x;
 		}
 	}
 
+	function getChildren(arr) {
+		return arr.reduce((acc, cur) => {
+			return [...acc, { name: cur, children: [] }];
+		}, []);
+	}
+
 	// console.log(treeData);
 	// console.log('build children')
 	let reqData = buildChildren(0, 0);
+	console.log(reqData)
 	treeData = reqData[0];
 
 	var totalNodes = 0;
